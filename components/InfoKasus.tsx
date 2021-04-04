@@ -21,14 +21,17 @@ const InfoKasus = () =>{
           await fetch('https://api.kawalcorona.com/indonesia/')
           .then((response) => response.json())
           .then((json) => setDataCovid(json))
-          .catch((error) => console.error(error))
+          .catch((error) => console.error(error));
+          setFetched(true);
       }
     useEffect(() => {
         getDataCovid();
-        setFetched(true);
+       
     });
     useEffect(() => {
+        if(fetched == true){
        SplashScreen.hide();
+        }
     })
     return(
         <View>
